@@ -280,7 +280,7 @@ TabContainer.Size = UDim2.new(0, 255, 0, 269)
 TabContainer.CanvasSize = UDim2.new(0,0,0,0)
 TabContainer.AutomaticCanvasSize = "X"
 TabContainer.ScrollBarThickness = 6
-TabContainer.ScrollBarImageColor3 = Color3.fromRGB(32,32,32)
+TabContainer.ScrollBarImageColor3 = Color3.fromRGB(22, 24, 25)
 TabContainer.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 
 UIListLayout_2.Parent = TabContainer
