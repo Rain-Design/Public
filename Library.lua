@@ -295,7 +295,7 @@ function library:CreateWindow(Info)
 			ButtonTextLabel.Size = UDim2.new(0, 307, 0, 25)
 			ButtonTextLabel.ZIndex = 2
 			ButtonTextLabel.Font = Enum.Font.GothamBold
-			ButtonTextLabel.Text = "Click Here"
+			ButtonTextLabel.Text = Info.Text
 			ButtonTextLabel.TextColor3 = Color3.fromRGB(223, 223, 223)
 			ButtonTextLabel.TextSize = 12.000
 
