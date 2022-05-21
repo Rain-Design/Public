@@ -1,7 +1,7 @@
 local library = {}
 
 if Colorless then
-	return print("The library already has been executed.")
+	game:GetService("CoreGui").Colorless:Remove()
 end
 	
 getgenv().Colorless = true
@@ -10,6 +10,7 @@ local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("ImageLabel")
 
 ScreenGui.Parent = game:GetService("CoreGui")
+ScreenGui.Name = "Colorless"
 
 MainFrame.Name = "MainFrame"
 MainFrame.Parent = ScreenGui
