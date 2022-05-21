@@ -172,7 +172,7 @@ function library:CreateWindow(Info)
 		SelectedTab.BackgroundColor3 = Color3.fromRGB(14, 171, 255)
 		SelectedTab.BorderSizePixel = 0
 		SelectedTab.Position = UDim2.new(0, 0, 0.181890219, 0)
-		SelectedTab.Size = UDim2.new(0, 2, 0, 14)
+		SelectedTab.Size = UDim2.new(0, 2, 0, 12)
 		SelectedTab.Visible = false
 		
 		ItemContainer.Name = "ItemContainer"
