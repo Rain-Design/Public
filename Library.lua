@@ -1,10 +1,10 @@
-if Colorless then
-return
-end
-
-getgenv().Colorless = true
-
 local library = {}
+
+if Colorless then
+	return print("The library already has been executed.")
+end
+	
+getgenv().Colorless = true
 
 local ScreenGui = Instance.new("ScreenGui")
 local MainFrame = Instance.new("ImageLabel")
