@@ -498,7 +498,7 @@ function library:CreateWindow(Info)
 			DropdownScrollingFrame.Parent = DropdownContainer
 			DropdownScrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 			DropdownScrollingFrame.BackgroundTransparency = 1.000
-			DropdownScrollingFrame.Size = UDim2.new(0, 307, 0, 100)
+			DropdownScrollingFrame.Size = UDim2.new(0, 307, 0, 0)
 			DropdownScrollingFrame.ZIndex = 3
 			DropdownScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 			DropdownScrollingFrame.BorderSizePixel = 0
@@ -546,6 +546,7 @@ function library:CreateWindow(Info)
 				
 				if SizeY < 100 then
 				SizeY = SizeY + 25
+				DropdownScrollingFrame.Size = UDim2.new(0, 307, 0, SizeY)
 				end
             
 				local DropdownButton = Instance.new("TextButton")
