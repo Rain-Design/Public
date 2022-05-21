@@ -205,7 +205,7 @@ function library:CreateWindow(Info)
 					t.SelectedTab.Visible = false
 				end
 				SelectedTab.Visible = true
-				local texttween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(14, 171, 255)})
+				local texttween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(223,223,223)})
 				texttween:Play()
 			end
 			ItemContainer.Visible = true
@@ -219,7 +219,7 @@ function library:CreateWindow(Info)
 			end
 			ItemContainer.Visible = true
 			SelectedTab.Visible = true
-			local showtween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(14, 171, 255)})
+			local showtween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(223,223,223)})
 			showtween:Play()
 		end
 		
