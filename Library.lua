@@ -1,3 +1,9 @@
+if Colorless then
+return
+end
+
+getgenv().Colorless = true
+
 local library = {}
 
 local ScreenGui = Instance.new("ScreenGui")
