@@ -142,19 +142,19 @@ function library:CreateWindow(Info)
 		local ItemContainterUIPadding = Instance.new("UIPadding")
 		
 		TabButton.Name = "TabButton"
-		TabButton.Parent = TabScrollingFrame
+		TabButton.Parent = game.StarterGui.ScreenGui.MainFrame.TabButtonContainer.TabScrollingFrame
 		TabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabButton.BackgroundTransparency = 1.000
-		TabButton.Size = UDim2.new(0, 100, 0, 33)
+		TabButton.Size = UDim2.new(0, 109, 0, 20)
 
 		TabTextLabel.Name = "TabTextLabel"
 		TabTextLabel.Parent = TabButton
 		TabTextLabel.BackgroundColor3 = Color3.fromRGB(167, 167, 167)
 		TabTextLabel.BackgroundTransparency = 1.000
-		TabTextLabel.Position = UDim2.new(0.0900000036, 0, 0.0444446914, 0)
-		TabTextLabel.Size = UDim2.new(0, 100, 0, 20)
-		TabTextLabel.Font = Enum.Font.GothamBlack
-		TabTextLabel.Text = Info.Name
+		TabTextLabel.Position = UDim2.new(0.315046102, 0, 0.0444458015, 0)
+		TabTextLabel.Size = UDim2.new(0, 68, 0, 19)
+		TabTextLabel.Font = Enum.Font.GothamBold
+		TabTextLabel.Text = Info.Text
 		TabTextLabel.TextColor3 = Color3.fromRGB(131, 131, 131)
 		TabTextLabel.TextSize = 11.000
 		TabTextLabel.TextXAlignment = Enum.TextXAlignment.Left
@@ -163,7 +163,8 @@ function library:CreateWindow(Info)
 		TabTextButton.Parent = TabButton
 		TabTextButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabTextButton.BackgroundTransparency = 1.000
-		TabTextButton.Size = UDim2.new(0, 109, 0, 19)
+		TabTextButton.Position = UDim2.new(0.349999994, 0, 0, 0)
+		TabTextButton.Size = UDim2.new(0, 74, 0, 19)
 		TabTextButton.Font = Enum.Font.SourceSans
 		TabTextButton.Text = ""
 		TabTextButton.TextColor3 = Color3.fromRGB(0, 0, 0)
