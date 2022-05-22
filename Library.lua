@@ -125,7 +125,7 @@ function library:CreateWindow(Info)
 	TabUIListLayout.Name = "TabUIListLayout"
 	TabUIListLayout.Parent = TabScrollingFrame
 	TabUIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
-	TabUIListLayout.Padding = UDim.new(0, 1)
+	TabUIListLayout.Padding = UDim.new(0, 4)
 	
 	function insidewindow:CreateTab(Info)
 		Info.Name = Info.Name or "Tab"
@@ -224,7 +224,7 @@ function library:CreateWindow(Info)
 			ItemContainer.Visible = true
 			local showtween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(223,223,223)})
 			local imagetween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(.2), {ImageColor3 = Color3.fromRGB(223,223,223)})
-			showtween:Play()
+			imagetween:Play()
 			showtween:Play()
 		end
 		
