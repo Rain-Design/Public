@@ -72,6 +72,7 @@ function library:CreateWindow(Info)
 	local insidewindow = {}
 	
 	local TabButtonContainer = Instance.new("ImageLabel")
+	local TabUIPadding = Instance.new("UIPadding")
 	local TabScrollingFrame = Instance.new("ScrollingFrame")
 	local TabUIListLayout = Instance.new("UIListLayout")
 	local Topbar = Instance.new("ImageLabel")
@@ -121,6 +122,9 @@ function library:CreateWindow(Info)
 	TabScrollingFrame.Size = UDim2.new(0, 109, 0, 307)
 	TabScrollingFrame.CanvasSize = UDim2.new(0, 0, 0, 0)
 	TabScrollingFrame.ScrollBarThickness = 4
+
+	TabUIPadding.Parent = TabScrollingFrame
+	TabUIPadding.PaddingTop = UDim.new(0, 6)
 
 	TabUIListLayout.Name = "TabUIListLayout"
 	TabUIListLayout.Parent = TabScrollingFrame
