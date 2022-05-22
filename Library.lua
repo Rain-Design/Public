@@ -208,12 +208,10 @@ function library:CreateWindow(Info)
 			for i,t in next, TabScrollingFrame:GetChildren() do
 				if t.Name == "TabButton" then
 					t.TabTextLabel.TextColor3 = Color3.fromRGB(131, 131, 131)
-					local imagetween1 = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(.2), {ImageColor3 = Color3.fromRGB(131,131,131)})
-					imagetween1:Play()
+					ImageLabel.ImageColor3 = Color3.fromRGB(131,131,131)
 				end
-				local imagetween = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(.2), {ImageColor3 = Color3.fromRGB(223,223,223)})
+				ImageLabel.ImageColor3 = Color3.fromRGB(223,223,223)
 				local texttween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(223,223,223)})
-				imagetween:Play()
 				texttween:Play()
 			end
 			ItemContainer.Visible = true
@@ -227,8 +225,7 @@ function library:CreateWindow(Info)
 			end
 			ItemContainer.Visible = true
 			local showtween = game:GetService("TweenService"):Create(TabTextLabel, TweenInfo.new(.2), {TextColor3 = Color3.fromRGB(223,223,223)})
-			local imagetweenshow = game:GetService("TweenService"):Create(ImageLabel, TweenInfo.new(.2), {ImageColor3 = Color3.fromRGB(223,223,223)})
-			imagetweenshow:Play()
+			ImageLabel.ImageColor3 = Color3.fromRGB(223,223,223)
 			showtween:Play()
 		end
 		
