@@ -84,7 +84,7 @@ function library:CreateWindow(Info)
 	Topbar.BackgroundTransparency = 1.000
 	Topbar.Size = UDim2.new(0, 422, 0, 42)
 	Topbar.Image = "rbxassetid://3570695787"
-	Topbar.ImageColor3 = Color3.fromRGB(30, 30, 30)
+	Topbar.ImageColor3 = Color3.fromRGB(24,24,24)
 	Topbar.ScaleType = Enum.ScaleType.Slice
 	Topbar.SliceCenter = Rect.new(100, 100, 100, 100)
 	Topbar.SliceScale = 0.030
