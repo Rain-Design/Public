@@ -23,7 +23,7 @@ MainFrame.Image = "rbxassetid://3570695787"
 MainFrame.ImageColor3 = Color3.fromRGB(19, 19, 19)
 MainFrame.ScaleType = Enum.ScaleType.Slice
 MainFrame.SliceCenter = Rect.new(100, 100, 100, 100)
-MainFrame.SliceScale = 0.030
+MainFrame.SliceScale = 0.070
 
 function dragify(Frame)
     dragToggle = nil
@@ -77,6 +77,7 @@ function library:CreateWindow(Info)
 	local TabUIListLayout = Instance.new("UIListLayout")
 	local Topbar = Instance.new("ImageLabel")
 	local Colorless = Instance.new("TextLabel")
+	local Divider1 = Instance.new("Frame")
 	
 	Topbar.Name = "Topbar"
 	Topbar.Parent = MainFrame
@@ -87,7 +88,7 @@ function library:CreateWindow(Info)
 	Topbar.ImageColor3 = Color3.fromRGB(24,24,24)
 	Topbar.ScaleType = Enum.ScaleType.Slice
 	Topbar.SliceCenter = Rect.new(100, 100, 100, 100)
-	Topbar.SliceScale = 0.030
+	Topbar.SliceScale = 0.070
 
 	Colorless.Name = "Colorless"
 	Colorless.Parent = Topbar
@@ -111,7 +112,13 @@ function library:CreateWindow(Info)
 	TabButtonContainer.ImageColor3 = Color3.fromRGB(22, 22, 22)
 	TabButtonContainer.ScaleType = Enum.ScaleType.Slice
 	TabButtonContainer.SliceCenter = Rect.new(100, 100, 100, 100)
-	TabButtonContainer.SliceScale = 0.030
+	TabButtonContainer.SliceScale = 0.070
+
+	Divider1.Parent = TabButtonContainer
+	Divider1.BackgroundColor3 = Color3.fromRGB(22, 22, 22)
+	Divider1.BorderSizePixel = 0
+	Divider1.Position = UDim2.new(0.993945181, 0, 0, 0)
+	Divider1.Size = UDim2.new(0, 3, 0, 310)
 
 	TabScrollingFrame.Name = "TabScrollingFrame"
 	TabScrollingFrame.Parent = TabButtonContainer
