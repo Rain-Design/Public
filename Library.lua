@@ -142,7 +142,7 @@ function library:CreateWindow(Info)
 		local ItemContainterUIPadding = Instance.new("UIPadding")
 		
 		TabButton.Name = "TabButton"
-		TabButton.Parent = game.StarterGui.ScreenGui.MainFrame.TabButtonContainer.TabScrollingFrame
+		TabButton.Parent = TabScrollingFrame
 		TabButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 		TabButton.BackgroundTransparency = 1.000
 		TabButton.Size = UDim2.new(0, 109, 0, 20)
