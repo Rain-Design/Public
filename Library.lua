@@ -154,7 +154,7 @@ function library:CreateWindow(Info)
 		TabTextLabel.Position = UDim2.new(0.315046102, 0, 0.0444458015, 0)
 		TabTextLabel.Size = UDim2.new(0, 68, 0, 19)
 		TabTextLabel.Font = Enum.Font.GothamBold
-		TabTextLabel.Text = Info.Text
+		TabTextLabel.Text = Info.Name
 		TabTextLabel.TextColor3 = Color3.fromRGB(131, 131, 131)
 		TabTextLabel.TextSize = 11.000
 		TabTextLabel.TextXAlignment = Enum.TextXAlignment.Left
