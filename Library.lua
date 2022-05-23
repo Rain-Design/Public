@@ -410,7 +410,7 @@ function library:CreateWindow(Info)
 					enabled = not enabled
 					pcall(Info.Callback,enabled)
 					if enabled then
-                        local colortween = game:GetService("TweenService"):Create(SwitchInnerButton, TweenInfo.new(.12), {ImageColor3 = Color3.fromRGB(14, 171, 255)})
+                        local colortween = game:GetService("TweenService"):Create(SwitchInnerButton, TweenInfo.new(.12), {ImageColor3 = Color3.fromRGB(253,166,0)})
 						local positiontween = game:GetService("TweenService"):Create(SwitchInnerButton, TweenInfo.new(.12), {Position = UDim2.new(0.553, 0,0, 0)}) -- {-0.033, 0},{0, 0}
 						positiontween:Play()
                         colortween:Play()
@@ -429,7 +429,7 @@ function library:CreateWindow(Info)
                 enabled = Bool
                 pcall(Info.Callback,enabled)
 					if enabled then
-						local colortween = game:GetService("TweenService"):Create(SwitchInnerButton, TweenInfo.new(.12), {ImageColor3 = Color3.fromRGB(14, 171, 255)})
+						local colortween = game:GetService("TweenService"):Create(SwitchInnerButton, TweenInfo.new(.12), {ImageColor3 = Color3.fromRGB(253,166,0)})
 						local positiontween = game:GetService("TweenService"):Create(SwitchInnerButton, TweenInfo.new(.12), {Position = UDim2.new(0.553, 0,0, 0)}) -- {-0.033, 0},{0, 0}
 						positiontween:Play()
                         colortween:Play()
@@ -523,7 +523,7 @@ function library:CreateWindow(Info)
 			DropdownScrollingFrame.BorderSizePixel = 0
 			DropdownScrollingFrame.AutomaticCanvasSize = "Y"
 			DropdownScrollingFrame.ScrollBarThickness = 4
-			DropdownScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(14, 171, 255)
+			DropdownScrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(253,166,0)
 			DropdownScrollingFrame.VerticalScrollBarInset = Enum.ScrollBarInset.ScrollBar
 
             DropdownUIListLayout.Name = "DropdownUIListLayout"
@@ -583,7 +583,7 @@ function library:CreateWindow(Info)
                 DropdownButton.TextSize = 11.000
 
                 DropdownButton.MouseEnter:Connect(function()
-                    local tween = game:GetService("TweenService"):Create(DropdownButton, TweenInfo.new(.12), {TextColor3 = Color3.fromRGB(14, 171, 255)})
+                    local tween = game:GetService("TweenService"):Create(DropdownButton, TweenInfo.new(.12), {TextColor3 = Color3.fromRGB(253,166,0)})
                     tween:Play()
                     tween.Completed:Wait()
                 end)
