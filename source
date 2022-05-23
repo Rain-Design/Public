@@ -1,0 +1,489 @@
+local OrionLib = loadstring(game:HttpGet(('https://raw.githubusercontent.com/shlexware/Orion/main/source')))()
+--add sera
+OrionLib:MakeNotification({Name = "Hello!!",Content = "Have fun with the script!",Image = "rbxassetid://7733658271",Time = 5})
+pos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
+
+local Window = OrionLib:MakeWindow({Name = "unConventional", SaveConfig = true, ConfigFolder = "OrionTest"})
+local mouse = game.Players.LocalPlayer:GetMouse()
+
+local Tab = Window:MakeTab({
+	Name = "Autofarm",
+	Icon = "rbxassetid://7072705757",
+	PremiumOnly = false
+})
+
+local Tab2 = Window:MakeTab({
+	Name = "Misc",
+	Icon = "rbxassetid://7072707647",
+	PremiumOnly = false
+})
+
+local Tab3 = Window:MakeTab({
+	Name = "Spinning",
+	Icon = "rbxassetid://7072715646",
+	PremiumOnly = false
+})
+
+local Tab4 = Window:MakeTab({
+	Name = "Updates",
+	Icon = "rbxassetid://7072717857",
+	PremiumOnly = false
+})
+
+Tab:AddToggle({
+	Name = "Enabled",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Autofarm"
+})
+
+Tab:AddLabel("Use Kill-Aura")
+
+Tab:AddToggle({
+	Name = "Freeze NPC",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Freeze"
+})
+
+Tab2:AddToggle({
+	Name = "Punch Kill-Aura",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Aura"
+})
+
+Tab2:AddToggle({
+	Name = "Energy Blade Kill-Aura (Need EB)",
+	Default = false,
+	Color = Color3.fromRGB(255, 107, 107),
+	Flag = "EnergyAura"
+})
+
+Tab2:AddToggle({
+	Name = "Arlo Farming",
+	Default = false,
+	Color = Color3.fromRGB(255, 230, 109),
+	Flag = "ArloFarm"
+})
+
+Tab2:AddToggle({
+	Name = "Rewind",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Rewind"
+})
+
+local auradistance
+Tab2:AddSlider({
+	Name = "Kill-Aura Distance",
+	Min = 15,
+	Max = 25,
+	Default = 20,
+	Color = Color3.fromRGB(41, 47, 54),
+	Increment = 1,
+	ValueName = "",
+	Callback = function(Value)
+		auradistance = Value
+	end    
+})
+
+Tab2:AddLabel("Kinda empty, maybe i'll be adding more things")
+
+Tab3:AddToggle({
+	Name = "Relic Spin",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Relic"
+})
+
+Tab3:AddToggle({
+	Name = "Fist Spin",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Fist"
+})
+
+Tab3:AddToggle({
+	Name = "Loop Spin (Not auto-roll)",
+	Default = false,
+	Color = Color3.fromRGB(41, 47, 54),
+	Flag = "Spin"
+})
+
+Tab3:AddButton({
+	Name = "Ability Spin",
+	Callback = function()
+      	game:GetService("ReplicatedStorage").Reroll:InvokeServer()
+  	end    
+})
+
+Tab4:AddLabel("Boss Autofarm")
+Tab4:AddLabel("New UI Colors")
+Tab4:AddLabel("Working on a auto-spinner")
+Tab4:AddLabel("Credits: Scripting: ZCute - UI Library: Orion Library (shlex)")
+Tab4:AddLabel("Shaddow#5884 DM if you find any bug")
+
+local label
+
+for i,v in pairs(game:GetService("CoreGui").Orion:GetDescendants()) do
+    if v:IsA("TextLabel") and (v.Text == "Standard" or v.Text == "Premium") then
+        label = v
+        v.Text = "Player"
+    end
+end
+
+local questnpcs = {}
+local quest
+local firstselect = true
+Tab:AddDropdown({
+	Name = "Select Quest",
+	Default = "Orientation (Quest 1)",
+	Options = {"Orientation (Quest 1)", "Plz Help (Quest 2)","Enforce Hierarchy (Quest 3)","Authoritarian (Quest 4)"},
+	Callback = function(Value)
+	    questnpcs = {}
+		if Value == "Orientation (Quest 1)" then
+		     table.insert(questnpcs,"Cripple")
+		     quest = "Orientation"
+		elseif
+	       Value == "Plz Help (Quest 2)" then
+	         table.insert(questnpcs,"Crail")
+	         quest = "Plz Help"
+	    elseif Value == "Enforce Hierarchy (Quest 3)" then
+             table.insert(questnpcs,"Isen")
+             table.insert(questnpcs,"Zeke")
+             quest = "Enforce Hierarchy"
+        elseif Value == "Authoritarian (Quest 4)" then
+             table.insert(questnpcs,"Blyke")
+             table.insert(questnpcs,"Remi")
+             quest = "Authoritarian"
+        end
+        firstselect = false
+	table.foreach(questnpcs,print)
+	end    
+})
+
+local distance
+Tab:AddSlider({
+	Name = "Distance",
+	Min = 3,
+	Max = 10,
+	Default = 3,
+	Color = Color3.fromRGB(41, 47, 54),
+	Increment = 1,
+	ValueName = "",
+	Callback = function(Value)
+		distance = Value
+	end    
+})
+
+local player = game.Players.LocalPlayer
+local function tp(pos)
+    local tween = game:GetService("TweenService"):Create(
+        game.Players.LocalPlayer.Character.HumanoidRootPart, 
+        TweenInfo.new((player.Character.HumanoidRootPart.Position - pos.Position).magnitude / 15, Enum.EasingStyle.Linear, Enum.EasingDirection.Out, 0, false, 0), 
+        {CFrame = pos}
+    )
+
+    tween:Play()
+
+    local completed
+    tween.Completed:Connect(function()
+        completed = true
+    end)
+    
+    while not completed do
+        if player.Character.Humanoid.Health <= 0 or not OrionLib.Flags["Autofarm"].Value then tween:Cancel() break end
+        task.wait()
+    end
+end
+
+local function checkrelic(relicpotential)
+    for i,v in pairs(game:GetService("HttpService"):JSONDecode(game.Players.LocalPlayer.Stats.Value).Relics) do
+    for i,v in pairs(v) do
+       if i == "BaseLevel" then
+           local value = v
+            local lvl = string.sub(v, 1, 1)
+           if tonumber(lvl) >= relicpotential then
+               return true
+            end
+         end
+    end
+    return false
+end
+end
+
+local function checkfist(fistpotential)
+    for i,v in pairs(game:GetService("HttpService"):JSONDecode(game.Players.LocalPlayer.Stats.Value).Fists) do
+    for i,v in pairs(v) do
+       if i == "BaseLevel" then
+           local value = v
+            local lvl = string.sub(v, 1, 1)
+           if tonumber(lvl) >= fistpotential then
+               return true
+            end
+         end
+    end
+    return false
+end
+end
+
+local function punch(v)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 1, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 1")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 2, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 1")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 3, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 1")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 4, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 1")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 5, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 1")
+wait(.15)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 1, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 2")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 2, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 2")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 3, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 2")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 4, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 2")
+wait(.05)
+game:GetService("ReplicatedStorage").Punch:FireServer(v.Humanoid, 5, game.Players.LocalPlayer.Character.Cancellations.Value, nil, "DamageMultiplier: 2")
+end
+
+local function barrier()
+    for i,v in pairs(workspace:GetChildren()) do
+        if v.Name == "Barrier" and v:FindFirstChild("Owner") and tostring(v.Owner.Value) == "Arlo" then
+            return true
+        end
+    end
+    return false
+end
+
+local function getbarrier()
+    for i,v in pairs(workspace:GetChildren()) do
+            if v.Name == "Barrier" and v:FindFirstChild("Owner") and tostring(v.Owner.Value) == "Arlo" then
+                return v
+            end
+    end
+    return nil
+end
+
+spawn(function()
+    while true do
+        pcall(function()
+            if OrionLib.Flags["Autofarm"].Value then
+        if OrionLib.Flags["ArloFarm"].Value then
+            if workspace:FindFirstChild("Arlo") and workspace.Arlo:FindFirstChild("Humanoid") and workspace.Arlo.Humanoid.Health > 0 and workspace.Arlo:FindFirstChild("HumanoidRootPart") then
+            if barrier() then
+                label.Text = "Killing Barrier"
+                tp(getbarrier().PrimaryPart.CFrame + getbarrier().PrimaryPart.CFrame.lookVector * 15)
+            else
+                label.Text = "Killing Arlo"
+                tp(workspace.Arlo.HumanoidRootPart.CFrame - workspace.Arlo.HumanoidRootPart.CFrame.lookVector * distance)
+            end
+                end
+        end
+        end
+        end)
+        task.wait()
+    end
+end)
+
+spawn(function()
+    while true do
+        pcall(function()
+            if OrionLib.Flags["Rewind"].Value then
+            game:GetService("ReplicatedStorage").Cast:FireServer("Rewind", {["Mousepos"] = mouse.Hit.p,["Charge"] = 3}, 0)
+            end
+        end)
+        task.wait()
+    end
+end)
+
+spawn(function()
+    while true do
+        if OrionLib.Flags["Autofarm"].Value then
+        pcall(function()
+                    local nearmob,dist = nil, math.huge
+        for _, v in next, game:GetService("Workspace"):GetDescendants() do
+        if (table.find(questnpcs,v.Name) and v:FindFirstChild("Humanoid") and v:FindFirstChild("HumanoidRootPart") and v.Humanoid.Health > 0) then
+            local magnitude = (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.HumanoidRootPart.Position).Magnitude
+            if (magnitude < dist) then
+                nearmob, dist = v, magnitude
+            end
+        end
+        end
+            if not game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Visible then
+        game:GetService("ReplicatedStorage").TakeQuest:FireServer(quest)
+        elseif game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Visible and game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Folder.Objective.progress.Text:split("/")[1] == game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Folder.Objective.progress.Text:split("/")[2] then
+        game:GetService("ReplicatedStorage").TakeQuest:FireServer("Completed")
+        end
+        --game:GetService("ReplicatedStorage").TakeQuest:FireServer("Completed")
+        if (nearmob) and not (workspace:FindFirstChild("Arlo") and OrionLib.Flags["ArloFarm"].Value) then
+                label.Text = "Killing "..nearmob.Name
+                --pcall(function()
+                    if game.Players.LocalPlayer.Character:FindFirstChild("Humanoid") and game.Players.LocalPlayer.Character.Humanoid.Health > 0 then
+                        tp(nearmob.HumanoidRootPart.CFrame - nearmob.HumanoidRootPart.CFrame.lookVector * distance)
+                        if OrionLib.Flags["Freeze"].Value then
+                        nearmob.HumanoidRootPart.Anchored = true
+                        end
+                        --if (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - nearmob.HumanoidRootPart.Position).Magnitude < distance + 5 then
+                        --game:GetService('VirtualInputManager'):SendMouseButtonEvent(0,0,0,true,nil,1)
+                        --wait()
+                        --game:GetService('VirtualInputManager'):SendMouseButtonEvent(0,0,0,false,nil,1)
+                        --punch(nearmob)
+                        --[[if OrionLib.Flags["Attack"].Value then
+                        if OrionLib.Flags["Energy"].Value then
+                        game:GetService("ReplicatedStorage").Damage:FireServer("DualSwordHeavy", nearmob.Humanoid, game.Players.LocalPlayer.Character.Cancellations.Value,{[1] = nearmob.Humanoid})
+                        else
+                          punch(nearmob)
+                          wait(.7)
+                        end
+                        ]]--end
+                        --end
+            else
+                label.Text = "Waiting for character to respawn"
+            end
+                --end)
+    end
+        end)
+        end
+        task.wait()
+    end
+end)
+
+spawn(function()
+    while true do
+        pcall(function()
+            if OrionLib.Flags["Autofarm"].Value then
+                if not game.Players.LocalPlayer.Character.Head:FindFirstChild("RightGlow") then
+                game:GetService("ReplicatedStorage").ToggleAbility:InvokeServer(true)
+                end
+            end
+        end)
+        task.wait()
+        end
+end)
+
+
+spawn(function()
+    while true do
+        pcall(function()
+            if OrionLib.Flags["Spin"].Value then
+                game:GetService("ReplicatedStorage").Reroll:InvokeServer()
+            end
+        end)
+    wait()
+    end
+end)
+
+spawn(function()
+        game:GetService('RunService').Stepped:connect(function()
+    pcall(function()
+        if OrionLib.Flags["Autofarm"].Value then
+        for i,v in pairs(game.Players.LocalPlayer.Character:GetChildren()) do
+            if v.ClassName == "Part" or v.ClassName == "MeshPart" then
+                v.CanCollide = false
+            end
+        end
+        end
+    end)
+    end)
+end)
+
+spawn(function()
+    game:GetService('RunService').Stepped:connect(function()
+        pcall(function()
+            if OrionLib.Flags["Autofarm"].Value then
+                game.Players.LocalPlayer.PlayerScripts.gaming:Destroy()
+                game.Players.LocalPlayer.Character.Head.name:Remove()
+                game.Players.LocalPlayer.Character.Head.hpbar:Remove()
+                game.Players.LocalPlayer.Character.Head.Jack:Remove()
+                game.Players.LocalPlayer.Character.Head.King:Remove()
+            end
+        end)
+    end)
+end)
+
+
+local runservice = game:GetService("RunService")
+spawn(function()
+runservice.Heartbeat:Connect(function()
+     pcall(function()
+        if OrionLib.Flags["EnergyAura"].Value then
+         for i,v in pairs(workspace:GetChildren()) do
+             if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and v.PrimaryPart ~= nil and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.PrimaryPart.Position).Magnitude < auradistance then
+        game:GetService("ReplicatedStorage").Damage:FireServer("DualSwordHeavy", v.Humanoid, game.Players.LocalPlayer.Character.Cancellations.Value,{[1] = v.Humanoid})
+        end
+        end
+end
+end)
+end)
+end)
+
+spawn(function()
+while true do
+     pcall(function()
+        if OrionLib.Flags["Aura"].Value then
+         for i,v in pairs(workspace:GetChildren()) do
+             if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and v.PrimaryPart ~= nil and (game.Players.LocalPlayer.Character.HumanoidRootPart.Position - v.PrimaryPart.Position).Magnitude < auradistance then
+            punch(v)
+            wait()
+      end
+        end
+end
+end)
+wait(.7)
+end
+end)
+
+spawn(function()
+    while true do
+        wait(600)
+        if OrionLib.Flags["Autofarm"].Value then
+       game:GetService("VirtualInputManager"):SendMouseMoveEvent(math.random(50,400),math.random(0,350),game)
+        end
+    end
+end)
+
+spawn(function()
+    while true do
+        pcall(function()
+             if OrionLib.Flags["Relic"].Value then
+                  local relics = tonumber(#game:GetService("HttpService"):JSONDecode(game.Players.LocalPlayer.Stats.Value).Relics)
+                 game.ReplicatedStorage.RollGear:InvokeServer("Relic")
+         end
+             end)
+    task.wait()
+    end
+end)
+
+spawn(function()
+    while true do
+        pcall(function()
+             if OrionLib.Flags["Fist"].Value then
+                  local fists = tonumber(#game:GetService("HttpService"):JSONDecode(game.Players.LocalPlayer.Stats.Value).Fists)
+                 game.ReplicatedStorage.RollGear:InvokeServer("Fist")
+             end
+             end)
+    task.wait()
+    end
+end)
+
+--game.ReplicatedStorage.RollGear:InvokeServer("Fist")
+
+spawn(function()
+    game:GetService('RunService').Stepped:connect(function()
+        if OrionLib.Flags["Autofarm"].Value then
+            pcall(function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.Velocity = Vector3.new(0,0,0)
+            end)
+        end
+    end)
+end)
+
+OrionLib:Init()
+local Sound = Instance.new("Sound")
+Sound.SoundId = "rbxassetid://4835664238"
+Sound.Parent = workspace
+Sound:Play()
