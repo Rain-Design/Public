@@ -612,6 +612,14 @@ function library:CreateWindow(Info)
                 end)
             end
 
+			function insidedropdown:Clear()
+				for i,v in pairs(DropdownScrollingFrame:GetChildren()) do
+					if v.Name == "DropdownButton" then
+						v:Destroy()
+			    	end
+					DropdownScrollingFrame.Size = UDim2.new(0, 307, 0, 0)
+			end
+
             return insidedropdown
         end
 		
