@@ -618,6 +618,7 @@ function library:CreateWindow(Info)
 						v:Destroy()
 			    	end
 					DropdownScrollingFrame.Size = UDim2.new(0, 307, 0, 0)
+				end
 			end
 
             return insidedropdown
