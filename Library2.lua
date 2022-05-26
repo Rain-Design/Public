@@ -1,7 +1,10 @@
 local Blur = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Rain-Design/Public/main/Blur')))()
+local UserInput = game:GetService('UserInputService')
 local library = {}
 
-function library:CreateWindow()
+function library:CreateWindow(Info)
+    Info.ToggleKey = Info.ToggleKey or Enum.KeyCode.F4
+
 local screenGui = Instance.new("ScreenGui")
 screenGui.Name = "ScreenGui"
 screenGui.Parent = game:GetService("CoreGui")
@@ -419,6 +422,19 @@ return insidetab
 end
 
 Blur:BindFrame(mainFrame,{Transparency = 0.6, Material = Enum.Material.Glass, Color = Color3.fromRGB(13, 13, 13)})
+
+local visible = true
+UserInput.InputBegan:Connect(function(input)
+if input.KeyCode == Info.ToggleKey then
+visible = not visible
+screenGui.Enabled = not screenGui.Enabled
+if visible then
+Blur:BindFrame(mainFrame,{Transparency = 0.6, Material = Enum.Material.Glass, Color = Color3.fromRGB(13, 13, 13)})
+else
+Blur:UnbindFrame(mainFrame)
+end
+end
+end)
 return insidewindow
 end
 return library
