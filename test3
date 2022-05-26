@@ -1,0 +1,372 @@
+local Blur = loadstring(game:HttpGet(('https://raw.githubusercontent.com/Rain-Design/Public/main/Blur')))()
+local library = {}
+
+function library:CreateWindow()
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScreenGui"
+
+local mainFrame = Instance.new("Frame")
+mainFrame.Name = "MainFrame"
+mainFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+mainFrame.BackgroundTransparency = 1
+mainFrame.Position = UDim2.fromScale(0.376, 0.26)
+mainFrame.Size = UDim2.fromOffset(394, 319)
+
+local uICorner = Instance.new("UICorner")
+uICorner.Name = "UICorner"
+uICorner.CornerRadius = UDim.new(0, 4)
+uICorner.Parent = mainFrame
+
+local tabFrame = Instance.new("Frame")
+tabFrame.Name = "TabFrame"
+tabFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 21)
+tabFrame.BackgroundTransparency = 0.2
+tabFrame.BorderSizePixel = 0
+tabFrame.Position = UDim2.fromScale(-0.000263, -0.000188)
+tabFrame.Size = UDim2.fromOffset(107, 319)
+
+local uICorner1 = Instance.new("UICorner")
+uICorner1.Name = "UICorner"
+uICorner1.CornerRadius = UDim.new(0, 4)
+uICorner1.Parent = tabFrame
+
+local frame = Instance.new("Frame")
+frame.Name = "Frame"
+frame.BackgroundColor3 = Color3.fromRGB(20, 20, 21)
+frame.BorderColor3 = Color3.fromRGB(39, 42, 48)
+frame.BorderSizePixel = 0
+frame.Position = UDim2.fromScale(0.932, 0)
+frame.Size = UDim2.fromOffset(8, 319)
+frame.Parent = tabFrame
+
+local scrollingFrame = Instance.new("ScrollingFrame")
+scrollingFrame.Name = "ScrollingFrame"
+scrollingFrame.AutomaticCanvasSize = Enum.AutomaticSize.Y
+scrollingFrame.CanvasSize = UDim2.new()
+scrollingFrame.ScrollBarImageColor3 = Color3.fromRGB(138, 138, 138)
+scrollingFrame.ScrollBarThickness = 0
+scrollingFrame.Active = true
+scrollingFrame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scrollingFrame.BackgroundTransparency = 1
+scrollingFrame.BorderSizePixel = 0
+scrollingFrame.Position = UDim2.fromScale(0, 0.132)
+scrollingFrame.Size = UDim2.fromOffset(100, 277)
+
+local uIListLayout = Instance.new("UIListLayout")
+uIListLayout.Name = "UIListLayout"
+uIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+uIListLayout.Parent = scrollingFrame
+
+local insidewindow = {}
+
+function insidewindow:CreateTab(Info)
+    Info.Name = Info.Name or "New Tab"
+    Info.Icon = Info.Icon or "rbxassetid://7733656100"
+    
+    local frame1 = Instance.new("Frame")
+frame1.Name = "TabButton"
+frame1.BackgroundColor3 = Color3.fromRGB(33, 148, 255)
+frame1.BackgroundTransparency = 1
+frame1.BorderSizePixel = 0
+frame1.Size = UDim2.fromOffset(100, 26)
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Name = "TextLabel"
+textLabel.Font = Enum.Font.GothamBlack
+textLabel.LineHeight = 0.9
+textLabel.RichText = true
+textLabel.Text = Info.Name
+textLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
+textLabel.TextSize = 11
+textLabel.TextXAlignment = Enum.TextXAlignment.Left
+textLabel.BackgroundColor3 = Color3.fromRGB(161, 161, 161)
+textLabel.BackgroundTransparency = 1
+textLabel.BorderSizePixel = 0
+textLabel.Position = UDim2.fromScale(0.3, 0)
+textLabel.Size = UDim2.fromOffset(69, 26)
+textLabel.Parent = frame1
+
+local imageLabel = Instance.new("ImageLabel")
+imageLabel.Name = "ImageLabel"
+imageLabel.Image = Info.Icon
+imageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+imageLabel.BackgroundTransparency = 1
+imageLabel.Position = UDim2.fromScale(0.07, 0.212)
+imageLabel.Size = UDim2.fromOffset(17, 17)
+imageLabel.Parent = frame1
+
+local textButton = Instance.new("TextButton")
+textButton.Name = "TextButton"
+textButton.Font = Enum.Font.SourceSans
+textButton.Text = ""
+textButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+textButton.TextSize = 14
+textButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textButton.BackgroundTransparency = 1
+textButton.Size = UDim2.fromOffset(100, 26)
+textButton.Parent = frame1
+
+frame1.Parent = scrollingFrame
+
+scrollingFrame.Parent = tabFrame
+
+local itemsFrame = Instance.new("Frame")
+itemsFrame.Name = "ItemsFrame"
+itemsFrame.BackgroundColor3 = Color3.fromRGB(20, 20, 21)
+itemsFrame.BorderSizePixel = 0
+itemsFrame.Position = UDim2.fromScale(0.268, -6.54e-05)
+itemsFrame.Size = UDim2.fromOffset(289, 319)
+
+local uICorner2 = Instance.new("UICorner")
+uICorner2.Name = "UICorner"
+uICorner2.CornerRadius = UDim.new(0, 4)
+uICorner2.Parent = itemsFrame
+
+local scrollingFrame1 = Instance.new("ScrollingFrame")
+scrollingFrame1.Name = "ScrollingFrame"
+scrollingFrame1.AutomaticCanvasSize = Enum.AutomaticSize.Y
+scrollingFrame1.CanvasSize = UDim2.new()
+scrollingFrame1.ScrollBarImageColor3 = Color3.fromRGB(0, 0, 0)
+scrollingFrame1.ScrollBarThickness = 0
+scrollingFrame1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+scrollingFrame1.BackgroundTransparency = 1
+scrollingFrame1.BorderSizePixel = 0
+scrollingFrame1.Position = UDim2.fromScale(-0.0198, 0)
+scrollingFrame1.Size = UDim2.fromOffset(294, 319)
+
+local uIListLayout1 = Instance.new("UIListLayout")
+uIListLayout1.Name = "UIListLayout"
+uIListLayout1.Padding = UDim.new(0, 5)
+uIListLayout1.SortOrder = Enum.SortOrder.LayoutOrder
+uIListLayout1.Parent = scrollingFrame1
+
+local uIPadding = Instance.new("UIPadding")
+uIPadding.Name = "UIPadding"
+uIPadding.PaddingLeft = UDim.new(0, 6)
+uIPadding.PaddingTop = UDim.new(0, 5)
+uIPadding.Parent = scrollingFrame1
+
+scrollingFrame1.Parent = itemsFrame
+
+itemsFrame.Parent = mainFrame
+
+textButton.MouseButton1Click:Connect(function()
+			for i,v in next,mainFrame:GetChildren() do
+				if v.Name == "ItemsFrame" then
+					v.Visible = false
+				end
+			end
+			for i,t in next, scrollingFrame:GetChildren() do
+				if t.Name == "TabButton" then
+					v.Transparency = 1
+				end
+				frame1.Transparency = 0
+			end
+			itemsFrame.Visible = true
+		end)
+end
+
+local textLabel1 = Instance.new("TextLabel")
+textLabel1.Name = "TextLabel"
+textLabel1.Font = Enum.Font.JosefinSans
+textLabel1.Text = "Fall"
+textLabel1.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel1.TextSize = 22
+textLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel1.BackgroundTransparency = 1
+textLabel1.Position = UDim2.fromScale(0, 0.0251)
+textLabel1.Size = UDim2.fromOffset(100, 34)
+textLabel1.Parent = tabFrame
+
+tabFrame.Parent = mainFrame
+
+local label = Instance.new("Frame")
+label.Name = "Label"
+label.BackgroundColor3 = Color3.fromRGB(28, 28, 30)
+label.BorderSizePixel = 0
+label.Size = UDim2.fromOffset(283, 28)
+
+local uICorner3 = Instance.new("UICorner")
+uICorner3.Name = "UICorner"
+uICorner3.CornerRadius = UDim.new(0, 3)
+uICorner3.Parent = label
+
+local labelText = Instance.new("TextLabel")
+labelText.Name = "LabelText"
+labelText.Font = Enum.Font.GothamBold
+labelText.Text = "That's the label."
+labelText.TextColor3 = Color3.fromRGB(235, 235, 235)
+labelText.TextSize = 12
+labelText.TextXAlignment = Enum.TextXAlignment.Left
+labelText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+labelText.BackgroundTransparency = 1
+labelText.Position = UDim2.fromScale(0.0323, 0)
+labelText.Size = UDim2.fromOffset(273, 28)
+labelText.Parent = label
+
+label.Parent = scrollingFrame1
+
+local button = Instance.new("Frame")
+button.Name = "Button"
+button.BackgroundColor3 = Color3.fromRGB(28, 28, 30)
+button.BorderSizePixel = 0
+button.Size = UDim2.fromOffset(283, 28)
+
+local uICorner4 = Instance.new("UICorner")
+uICorner4.Name = "UICorner"
+uICorner4.CornerRadius = UDim.new(0, 3)
+uICorner4.Parent = button
+
+local buttonText = Instance.new("TextLabel")
+buttonText.Name = "ButtonText"
+buttonText.Font = Enum.Font.GothamBold
+buttonText.Text = "Click Here"
+buttonText.TextColor3 = Color3.fromRGB(235, 235, 235)
+buttonText.TextSize = 12
+buttonText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+buttonText.BackgroundTransparency = 1
+buttonText.Position = UDim2.fromScale(0.00606, 0)
+buttonText.Size = UDim2.fromOffset(281, 28)
+buttonText.Parent = button
+
+local buttonIcon = Instance.new("ImageLabel")
+buttonIcon.Name = "ButtonIcon"
+buttonIcon.Image = "http://www.roblox.com/asset/?id=6034837797"
+buttonIcon.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+buttonIcon.BackgroundTransparency = 1
+buttonIcon.Position = UDim2.fromScale(0.915, 0.179)
+buttonIcon.Size = UDim2.fromOffset(17, 17)
+buttonIcon.Parent = button
+
+local textButton1 = Instance.new("TextButton")
+textButton1.Name = "TextButton"
+textButton1.Font = Enum.Font.SourceSans
+textButton1.Text = ""
+textButton1.TextColor3 = Color3.fromRGB(0, 0, 0)
+textButton1.TextSize = 14
+textButton1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textButton1.BackgroundTransparency = 1
+textButton1.Position = UDim2.fromScale(0.00606, 0)
+textButton1.Size = UDim2.fromOffset(280, 29)
+textButton1.Parent = button
+
+button.Parent = scrollingFrame1
+
+local switch = Instance.new("Frame")
+switch.Name = "Switch"
+switch.BackgroundColor3 = Color3.fromRGB(28, 28, 30)
+switch.BorderSizePixel = 0
+switch.Size = UDim2.fromOffset(283, 28)
+
+local uICorner5 = Instance.new("UICorner")
+uICorner5.Name = "UICorner"
+uICorner5.CornerRadius = UDim.new(0, 3)
+uICorner5.Parent = switch
+
+local switchText = Instance.new("TextLabel")
+switchText.Name = "SwitchText"
+switchText.Font = Enum.Font.GothamBold
+switchText.Text = "Switch"
+switchText.TextColor3 = Color3.fromRGB(235, 235, 235)
+switchText.TextSize = 12
+switchText.TextXAlignment = Enum.TextXAlignment.Left
+switchText.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+switchText.BackgroundTransparency = 1
+switchText.Position = UDim2.fromScale(0.0323, 0)
+switchText.Size = UDim2.fromOffset(273, 28)
+switchText.Parent = switch
+
+local frame2 = Instance.new("ImageLabel")
+frame2.Name = "Frame"
+frame2.Image = "rbxassetid://3570695787"
+frame2.ScaleType = Enum.ScaleType.Slice
+frame2.SliceCenter = Rect.new(100, 100, 100, 100)
+frame2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame2.BackgroundTransparency = 1
+frame2.Position = UDim2.fromScale(0.845, 0.429)
+frame2.Size = UDim2.fromOffset(26, 4)
+
+local frame3 = Instance.new("ImageLabel")
+frame3.Name = "Frame"
+frame3.Image = "rbxassetid://3570695787"
+frame3.ImageColor3 = Color3.fromRGB(33, 148, 255)
+frame3.ScaleType = Enum.ScaleType.Slice
+frame3.SliceCenter = Rect.new(100, 100, 100, 100)
+frame3.BackgroundColor3 = Color3.fromRGB(33, 148, 255)
+frame3.BackgroundTransparency = 1
+frame3.Position = UDim2.fromScale(0, -0.75)
+frame3.Size = UDim2.fromOffset(10, 10)
+
+local textButton2 = Instance.new("TextButton")
+textButton2.Name = "TextButton"
+textButton2.Font = Enum.Font.SourceSans
+textButton2.Text = ""
+textButton2.TextColor3 = Color3.fromRGB(0, 0, 0)
+textButton2.TextSize = 14
+textButton2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textButton2.BackgroundTransparency = 1
+textButton2.Size = UDim2.fromOffset(10, 10)
+textButton2.Parent = frame3
+
+frame3.Parent = frame2
+
+frame2.Parent = switch
+
+switch.Parent = scrollingFrame1
+
+local switch1 = Instance.new("Frame")
+switch1.Name = "Switch"
+switch1.BackgroundColor3 = Color3.fromRGB(28, 28, 30)
+switch1.BorderSizePixel = 0
+switch1.Size = UDim2.fromOffset(283, 28)
+
+local uICorner6 = Instance.new("UICorner")
+uICorner6.Name = "UICorner"
+uICorner6.CornerRadius = UDim.new(0, 3)
+uICorner6.Parent = switch1
+
+local switchText1 = Instance.new("TextLabel")
+switchText1.Name = "SwitchText"
+switchText1.Font = Enum.Font.GothamBold
+switchText1.Text = "Switch"
+switchText1.TextColor3 = Color3.fromRGB(235, 235, 235)
+switchText1.TextSize = 12
+switchText1.TextXAlignment = Enum.TextXAlignment.Left
+switchText1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+switchText1.BackgroundTransparency = 1
+switchText1.Position = UDim2.fromScale(0.0323, 0)
+switchText1.Size = UDim2.fromOffset(273, 28)
+switchText1.Parent = switch1
+
+local frame4 = Instance.new("ImageLabel")
+frame4.Name = "Frame"
+frame4.Image = "rbxassetid://3570695787"
+frame4.ImageColor3 = Color3.fromRGB(33, 148, 255)
+frame4.ScaleType = Enum.ScaleType.Slice
+frame4.SliceCenter = Rect.new(100, 100, 100, 100)
+frame4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame4.BackgroundTransparency = 1
+frame4.Position = UDim2.fromScale(0.845, 0.429)
+frame4.Size = UDim2.fromOffset(26, 4)
+
+local frame5 = Instance.new("ImageLabel")
+frame5.Name = "Frame"
+frame5.Image = "rbxassetid://3570695787"
+frame5.ScaleType = Enum.ScaleType.Slice
+frame5.SliceCenter = Rect.new(100, 100, 100, 100)
+frame5.BackgroundColor3 = Color3.fromRGB(33, 148, 255)
+frame5.BackgroundTransparency = 1
+frame5.Position = UDim2.fromScale(0.615, -0.75)
+frame5.Size = UDim2.fromOffset(10, 10)
+frame5.Parent = frame4
+
+frame4.Parent = switch1
+
+switch1.Parent = scrollingFrame1
+
+mainFrame.Parent = screenGui
+
+Blur:BindFrame(mainFrame,{Transparency = 0.6, Material = Enum.Material.Glass, Color = Color3.fromRGB(13, 13, 13)})
+return insidewindow
+end
+return library
