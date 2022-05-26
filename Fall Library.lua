@@ -377,7 +377,7 @@ uICorner2.Name = "UICorner"
 uICorner2.CornerRadius = UDim.new(100, 100)
 uICorner2.Parent = innerframe
 
-innerframe.Parent = innerframe
+innerframe.Parent = mainframe
 
 framemain.Parent = normal_Switch
 
