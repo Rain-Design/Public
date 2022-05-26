@@ -17,6 +17,20 @@ mainFrame.Position = UDim2.fromScale(0.376, 0.26)
 mainFrame.Size = UDim2.fromOffset(394, 319)
 mainFrame.Parent = screenGui
 
+local shadow = Instance.new("ImageLabel")
+shadow.Name = "shadow"
+shadow.Image = "rbxassetid://9313765853"
+shadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+shadow.ScaleType = Enum.ScaleType.Slice
+shadow.SliceCenter = Rect.new(45, 45, 45, 45)
+shadow.SliceScale = 0.70
+shadow.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+shadow.BackgroundTransparency = 1
+shadow.Position = UDim2.fromScale(-0.0381, -0.0564)
+shadow.Size = UDim2.fromOffset(433, 361)
+shadow.ZIndex = -1
+shadow.Parent = mainFrame
+
 function dragify(Frame)
     dragToggle = nil
     dragSpeed = .05
