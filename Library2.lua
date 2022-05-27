@@ -141,7 +141,7 @@ function insidewindow:CreateTab(Info)
     
 local tabButton = Instance.new("Frame")
 tabButton.Name = "TabButton"
-tabButton.BackgroundColor3 = Color3.fromRGB(42, 37, 80)
+tabButton.BackgroundColor3 = Color3.fromRGB(108, 92, 218)
 tabButton.BackgroundTransparency = 1
 tabButton.BorderSizePixel = 0
 tabButton.Size = UDim2.fromOffset(100, 26)
@@ -422,7 +422,7 @@ local enabled = false
 					enabled = not enabled
 					pcall(Info.Callback,enabled)
 					if enabled then
-                        local color1tween = game:GetService("TweenService"):Create(framemain, TweenInfo.new(.2), {BackgroundColor3 = Color3.fromRGB(42, 37, 80)})
+                        local color1tween = game:GetService("TweenService"):Create(framemain, TweenInfo.new(.2), {BackgroundColor3 = Color3.fromRGB(108, 92, 218)})
 						local positiontween = game:GetService("TweenService"):Create(innerframe, TweenInfo.new(.12), {Position = UDim2.new(0.628, 0,0.112, 0)})
 						positiontween:Play()
                         color1tween:Play()
