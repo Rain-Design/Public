@@ -139,12 +139,12 @@ function insidewindow:CreateTab(Info)
     Info.Name = Info.Name or "New Tab"
     Info.Icon = Info.Icon or "rbxassetid://7733656100"
     
-    local frame1 = Instance.new("Frame")
-frame1.Name = "TabButton"
-frame1.BackgroundColor3 = Color3.fromRGB(33, 148, 255)
-frame1.BackgroundTransparency = 1
-frame1.BorderSizePixel = 0
-frame1.Size = UDim2.fromOffset(100, 26)
+local tabButton = Instance.new("Frame")
+tabButton.Name = "TabButton"
+tabButton.BackgroundColor3 = Color3.fromRGB(42, 37, 80)
+tabButton.BackgroundTransparency = 1
+tabButton.BorderSizePixel = 0
+tabButton.Size = UDim2.fromOffset(100, 26)
 
 local textLabel = Instance.new("TextLabel")
 textLabel.Name = "TextLabel"
@@ -152,7 +152,7 @@ textLabel.Font = Enum.Font.GothamBlack
 textLabel.LineHeight = 0.9
 textLabel.RichText = true
 textLabel.Text = Info.Name
-textLabel.TextColor3 = Color3.fromRGB(225, 225, 225)
+textLabel.TextColor3 = Color3.fromRGB(152, 152, 152)
 textLabel.TextSize = 11
 textLabel.TextXAlignment = Enum.TextXAlignment.Left
 textLabel.BackgroundColor3 = Color3.fromRGB(161, 161, 161)
@@ -160,7 +160,7 @@ textLabel.BackgroundTransparency = 1
 textLabel.BorderSizePixel = 0
 textLabel.Position = UDim2.fromScale(0.3, 0)
 textLabel.Size = UDim2.fromOffset(69, 26)
-textLabel.Parent = frame1
+textLabel.Parent = tabButton
 
 local imageLabel = Instance.new("ImageLabel")
 imageLabel.Name = "ImageLabel"
@@ -168,8 +168,9 @@ imageLabel.Image = Info.Icon
 imageLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 imageLabel.BackgroundTransparency = 1
 imageLabel.Position = UDim2.fromScale(0.07, 0.212)
+imageLabel.ImageColor3 = Color3.fromRGB(152, 152, 152)
 imageLabel.Size = UDim2.fromOffset(17, 17)
-imageLabel.Parent = frame1
+imageLabel.Parent = tabButton
 
 local textButton = Instance.new("TextButton")
 textButton.Name = "TextButton"
@@ -180,9 +181,9 @@ textButton.TextSize = 14
 textButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
 textButton.BackgroundTransparency = 1
 textButton.Size = UDim2.fromOffset(100, 26)
-textButton.Parent = frame1
+textButton.Parent = tabButton
 
-frame1.Parent = scrollingFrame
+tabButton.Parent = scrollingFrame
 
 scrollingFrame.Parent = tabFrame
 
@@ -236,10 +237,13 @@ textButton.MouseButton1Click:Connect(function()
 			for i,v in next, scrollingFrame:GetChildren() do
 				if v.Name == "TabButton" then
 					v.Transparency = 1
+					v.TextLabel.TextColor3 = Color3.fromRGB(152, 152, 152)
+				    v.ImageLabel.ImageColor3 = Color3.fromRGB(152,152,152)
 				end
 			end
-			local transparencytween = game:GetService("TweenService"):Create(frame1, TweenInfo.new(.3), {Transparency = 0})
-			transparencytween:Play()
+			tabButton.Transparency = 0
+			tabButton.TextLabel.TextColor3 = Color3.fromRGB(255,255,255)
+			imageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
 end)
 	
 	local insidetab = {}
@@ -251,8 +255,9 @@ end)
 				end
 			end
 			itemsFrame.Visible = true
-			local transparencytween = game:GetService("TweenService"):Create(frame1, TweenInfo.new(.3), {Transparency = 0})
-			transparencytween:Play()
+			tabButton.Transparency = 0
+			tabButton.TextLabel.TextColor3 = Color3.fromRGB(255,255,255)
+			imageLabel.ImageColor3 = Color3.fromRGB(255, 255, 255)
 		end
 	
 	function insidetab:CreateLabel(Info)
@@ -417,7 +422,7 @@ local enabled = false
 					enabled = not enabled
 					pcall(Info.Callback,enabled)
 					if enabled then
-                        local color1tween = game:GetService("TweenService"):Create(framemain, TweenInfo.new(.2), {BackgroundColor3 = Color3.fromRGB(33, 148, 255)})
+                        local color1tween = game:GetService("TweenService"):Create(framemain, TweenInfo.new(.2), {BackgroundColor3 = Color3.fromRGB(42, 37, 80)})
 						local positiontween = game:GetService("TweenService"):Create(innerframe, TweenInfo.new(.12), {Position = UDim2.new(0.628, 0,0.112, 0)})
 						positiontween:Play()
                         color1tween:Play()
