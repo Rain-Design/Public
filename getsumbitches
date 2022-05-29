@@ -1,0 +1,177 @@
+local screenGui = Instance.new("ScreenGui")
+screenGui.Name = "ScreenGui"
+screenGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+screenGui.Parent = game.CoreGui
+
+local frame = Instance.new("Frame")
+frame.Name = "Frame"
+frame.AnchorPoint = Vector2.new(1, 1)
+frame.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+frame.Position = UDim2.fromScale(1, 1.58)
+frame.Size = UDim2.fromOffset(1953, 1613)
+
+local textLabel = Instance.new("TextLabel")
+textLabel.Name = "TextLabel"
+textLabel.Font = Enum.Font.Roboto
+textLabel.Text = "Hmmmm, YOU DON'T PULL ANY BITCHES AT ALL"
+textLabel.TextColor3 = Color3.fromRGB(0, 0, 0)
+textLabel.TextSize = 43
+textLabel.AnchorPoint = Vector2.new(1, 1)
+textLabel.AutomaticSize = Enum.AutomaticSize.X
+textLabel.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel.BackgroundTransparency = 1
+textLabel.Position = UDim2.fromScale(0.721, 0.226)
+textLabel.Size = UDim2.fromOffset(40, 50)
+textLabel.Parent = frame
+
+local textLabel1 = Instance.new("TextLabel")
+textLabel1.Name = "TextLabel"
+textLabel1.Font = Enum.Font.Roboto
+textLabel1.Text = "hmmmmm, no bitches i see, use tips below"
+textLabel1.TextColor3 = Color3.fromRGB(0, 0, 0)
+textLabel1.TextSize = 17
+textLabel1.AnchorPoint = Vector2.new(1, 1)
+textLabel1.AutomaticSize = Enum.AutomaticSize.X
+textLabel1.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel1.BackgroundTransparency = 1
+textLabel1.Position = UDim2.fromScale(0.442, 0.281)
+textLabel1.Size = UDim2.fromOffset(40, 50)
+textLabel1.Parent = frame
+
+local textLabel2 = Instance.new("TextLabel")
+textLabel2.Name = "TextLabel"
+textLabel2.Font = Enum.Font.ArialBold
+textLabel2.Text = "You get no bitches heres some tips"
+textLabel2.TextColor3 = Color3.fromRGB(0, 0, 0)
+textLabel2.TextSize = 17
+textLabel2.AnchorPoint = Vector2.new(1, 1)
+textLabel2.AutomaticSize = Enum.AutomaticSize.X
+textLabel2.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel2.BackgroundTransparency = 1
+textLabel2.Position = UDim2.fromScale(0.429, 0.321)
+textLabel2.Size = UDim2.fromOffset(40, 50)
+textLabel2.Parent = frame
+
+local frame1 = Instance.new("Frame")
+frame1.Name = "Frame"
+frame1.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame1.BorderSizePixel = 0
+frame1.Position = UDim2.fromScale(0.306, 0.325)
+frame1.Size = UDim2.fromOffset(4, 4)
+
+local uICorner = Instance.new("UICorner")
+uICorner.Name = "UICorner"
+uICorner.CornerRadius = UDim.new(100, 100)
+uICorner.Parent = frame1
+
+local textLabel3 = Instance.new("TextLabel")
+textLabel3.Name = "TextLabel"
+textLabel3.Font = Enum.Font.Roboto
+textLabel3.Text = "Go outside"
+textLabel3.TextColor3 = Color3.fromRGB(0, 0, 0)
+textLabel3.TextSize = 17
+textLabel3.AnchorPoint = Vector2.new(1, 1)
+textLabel3.AutomaticSize = Enum.AutomaticSize.X
+textLabel3.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel3.BackgroundTransparency = 1
+textLabel3.Position = UDim2.fromScale(20.9, 6.85)
+textLabel3.Size = UDim2.fromOffset(40, 50)
+textLabel3.Parent = frame1
+
+frame1.Parent = frame
+
+local frame2 = Instance.new("Frame")
+frame2.Name = "Frame"
+frame2.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame2.BorderSizePixel = 0
+frame2.Position = UDim2.fromScale(0.306, 0.339)
+frame2.Size = UDim2.fromOffset(4, 4)
+
+local uICorner1 = Instance.new("UICorner")
+uICorner1.Name = "UICorner"
+uICorner1.CornerRadius = UDim.new(100, 100)
+uICorner1.Parent = frame2
+
+local textLabel4 = Instance.new("TextLabel")
+textLabel4.Name = "TextLabel"
+textLabel4.Font = Enum.Font.Roboto
+textLabel4.Text = "Get some friends"
+textLabel4.TextColor3 = Color3.fromRGB(0, 0, 0)
+textLabel4.TextSize = 17
+textLabel4.AnchorPoint = Vector2.new(1, 1)
+textLabel4.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel4.BackgroundTransparency = 1
+textLabel4.Position = UDim2.fromScale(31.2, 6.85)
+textLabel4.Size = UDim2.fromOffset(114, 50)
+textLabel4.Parent = frame2
+
+frame2.Parent = frame
+
+local frame3 = Instance.new("Frame")
+frame3.Name = "Frame"
+frame3.BackgroundColor3 = Color3.fromRGB(0, 0, 0)
+frame3.BorderSizePixel = 0
+frame3.Position = UDim2.fromScale(0.306, 0.354)
+frame3.Size = UDim2.fromOffset(4, 4)
+
+local uICorner2 = Instance.new("UICorner")
+uICorner2.Name = "UICorner"
+uICorner2.CornerRadius = UDim.new(100, 100)
+uICorner2.Parent = frame3
+
+local textLabel5 = Instance.new("TextLabel")
+textLabel5.Name = "TextLabel"
+textLabel5.Font = Enum.Font.Roboto
+textLabel5.Text = "Or be lonely"
+textLabel5.TextColor3 = Color3.fromRGB(0, 0, 0)
+textLabel5.TextSize = 17
+textLabel5.TextXAlignment = Enum.TextXAlignment.Left
+textLabel5.AnchorPoint = Vector2.new(1, 1)
+textLabel5.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel5.BackgroundTransparency = 1
+textLabel5.Position = UDim2.fromScale(31.2, 6.85)
+textLabel5.Size = UDim2.fromOffset(114, 50)
+textLabel5.Parent = frame3
+
+frame3.Parent = frame
+
+local frame4 = Instance.new("Frame")
+frame4.Name = "Frame"
+frame4.BackgroundColor3 = Color3.fromRGB(14, 110, 200)
+frame4.Position = UDim2.fromScale(0.615, 0.376)
+frame4.Size = UDim2.fromOffset(206, 34)
+
+local uICorner3 = Instance.new("UICorner")
+uICorner3.Name = "UICorner"
+uICorner3.Parent = frame4
+
+local textLabel6 = Instance.new("TextLabel")
+textLabel6.Name = "TextLabel"
+textLabel6.Font = Enum.Font.Roboto
+textLabel6.Text = "Look for some bitches"
+textLabel6.TextColor3 = Color3.fromRGB(255, 255, 255)
+textLabel6.TextSize = 16
+textLabel6.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textLabel6.BackgroundTransparency = 1
+textLabel6.Size = UDim2.fromOffset(206, 34)
+
+local textButton = Instance.new("TextButton")
+textButton.Name = "TextButton"
+textButton.Font = Enum.Font.SourceSans
+textButton.Text = ""
+textButton.TextColor3 = Color3.fromRGB(0, 0, 0)
+textButton.TextSize = 14
+textButton.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+textButton.BackgroundTransparency = 1
+textButton.Size = UDim2.fromOffset(206, 34)
+textButton.Parent = textLabel6
+
+textLabel6.Parent = frame4
+
+frame4.Parent = frame
+
+frame.Parent = screenGui
+
+textButton.MouseButton1Click:Connect(function()
+game:Shutdown()
+end)
