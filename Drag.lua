@@ -1,9 +1,9 @@
 -- Not mine
 local drag = {}
 
-function drag:dragify(Frame)
+function drag:dragify(Frame,Delay)
     dragToggle = nil
-    dragSpeed = .2
+    dragSpeed = Delay
     dragInput = nil
     dragStart = nil
     dragPos = nil
