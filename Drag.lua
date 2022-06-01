@@ -3,7 +3,7 @@ local drag = {}
 
 function drag:dragify(Frame)
     dragToggle = nil
-    dragSpeed = .05
+    dragSpeed = .2
     dragInput = nil
     dragStart = nil
     dragPos = nil
