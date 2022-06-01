@@ -1,7 +1,7 @@
 -- Not mine
-local resizetable = {}
+local drag = {}
 
-function resizetable:dragify(Frame)
+function drag:dragify(Frame)
     dragToggle = nil
     dragSpeed = .05
     dragInput = nil
@@ -40,4 +40,4 @@ function resizetable:dragify(Frame)
     end)
     end
 
-return resizetable
+return drag
