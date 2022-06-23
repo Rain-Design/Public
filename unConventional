@@ -1,0 +1,261 @@
+local library = loadstring(game:GetObjects("rbxassetid://7657867786")[1].Source)()
+
+local Players = game:GetService("Players")
+local Player = Players.LocalPlayer
+
+old = Player.Character.HumanoidRootPart.CFrame
+
+local Stats = Player.Stats
+
+local Settings = {
+    KillAura = false,
+    Autofarm = false,
+    AutoQuest = false,
+    Hide = false,
+    AuraDistance = 15,
+    Quest = nil,
+    Target = nil
+}
+
+local MathShit = {
+    Cash = 0
+}
+
+local Positions = {
+    ["Lab"] = CFrame.new(-433.954681, 132.5923, -293.11261, -0.00692361128, 3.78654302e-10, 0.999976039, 7.35568551e-10, 1, -3.7357048e-10, -0.999976039, 7.32964467e-10, -0.00692361128),
+    ["Spawn"] = CFrame.new(-52.4700432, 132.356155, -90.4959946, 1, -5.47820029e-08, 1.46783234e-13, 5.47820029e-08, 1, -8.22970705e-08, -1.42274837e-13, 8.22970705e-08, 1),
+    ["Barber Shop"] = CFrame.new(-266.036713, 134.874237, 45.7605324, -0.0612365082, -2.26253007e-08, 0.998123288, -1.72717289e-08, 1, 2.16081926e-08, -0.998123288, -1.5916104e-08, -0.0612365082),
+    ["Amp Dealer"] = CFrame.new(-277.798828, 132.157166, 31.3639507, 0.0404989459, 3.40166295e-08, 0.999179602, 5.20144781e-08, 1, -3.6152823e-08, -0.999179602, 5.34359543e-08, 0.0404989459),
+    ["Behind the School"] = CFrame.new(192.957504, 132.356171, -87.7788696, -0.0165167768, 2.28507968e-08, 0.999863565, 3.94700539e-09, 1, -2.27887131e-08, -0.999863565, 3.57007068e-09, -0.0165167768),
+    ["Cosmetic Shop"] = CFrame.new(533.185303, 137.291168, -70.1175079, 0.00248270016, -3.58167078e-08, -0.999996901, 3.15131103e-08, 1, -3.57385801e-08, 0.999996901, -3.14242854e-08, 0.00248270016),
+    ["Gym"] = CFrame.new(-160.144424, 132.331055, -637.309204, 0.99798131, -7.67064412e-10, 0.0635082573, 1.26911415e-09, 1, -7.86492738e-09, -0.0635082573, 7.92964983e-09, 0.99798131),
+    ["Low-Tiers"] = CFrame.new(-137.273102, 132.293701, -177.881409, 0.93151927, 2.34844375e-08, -0.363691986, -2.25995969e-08, 1, 6.68828726e-09, 0.363691986, 1.98902383e-09, 0.93151927),
+    ["Mid-Tiers"] = CFrame.new(-123.522423, 132.293671, -40.5634575, -0.979043126, 4.40318288e-08, -0.203653082, 3.15373399e-08, 1, 6.45971667e-08, 0.203653082, 5.68207383e-08, -0.979043126),
+    ["Elite-Tiers"] = CFrame.new(-42.5738258, 132.293716, -387.00351, 0.989503503, -6.86422936e-08, 0.144508943, 5.66535903e-08, 1, 8.70767138e-08, -0.144508943, -7.79757627e-08, 0.989503503),
+    ["High-Tiers"] = CFrame.new(-80.4143295, 132.23111, -568.917053, -0.0267775655, -2.62415192e-08, -0.999641418, 9.03233897e-08, 1, -2.8670442e-08, 0.999641418, -9.10587303e-08, -0.0267775655)
+}
+
+local Quests = {
+    ["Low-Tiers"] = "Orientation",
+    ["Mid-Tiers"] = "Plz Help",
+    ["Elite-Tiers"] = "Enforce Hierarchy",
+    ["High-Tiers"] = "Authoritarian"
+}
+
+local Targets = {
+    ["Low-Tiers"] = {"Cripple"},
+    ["Mid-Tiers"] = {"Crail"},
+    ["Elite-Tiers"] = {"Zeke","Isen"},
+    ["High-Tiers"] = {"Remi","Blyke"}
+}
+
+local Win = library:CreateWindow({
+Name = "unConventional",
+})
+
+local FarmingTab = Win:CreateTab({
+Name = "Farming"
+})
+
+local FarmingSection = FarmingTab:CreateSection({
+Name = "Farming"
+})
+
+local TeleportSection = FarmingTab:CreateSection({
+Name = "Teleports"
+})
+
+local InfoSection = FarmingTab:CreateSection({
+Name = "Info",
+Side = "Right"
+})
+
+local BypassText = InfoSection:AddLabel({
+    Text = "Teleport Bypassed: "
+})
+
+local CashText = InfoSection:AddLabel({
+    Text = "Cash Gained: 0"
+})
+
+coroutine.wrap(function()
+    oldcash = tonumber(game:GetService("HttpService"):JSONDecode(Stats.Value).Money)
+    Stats.Changed:Connect(function(v)
+        if Settings.Autofarm then
+        actualcash = tonumber(game:GetService("HttpService"):JSONDecode(Stats.Value).Money)
+        aftermath = actualcash - oldcash
+        CashText:Set("Cash Gained: "..tostring(aftermath))
+        end
+    end)
+end)()
+
+FarmingSection:AddToggle({
+Name = "Autofarm (Use Kill-Aura)",
+Callback  = function(v)
+    if v then
+        oldcash = tonumber(game:GetService("HttpService"):JSONDecode(Stats.Value).Money)
+        CashText:Set("Cash Gained: 0")
+    end
+    Settings.Autofarm = v
+end
+})
+
+FarmingSection:AddToggle({
+Name = "Hide Name",
+Callback  = function(v)
+    Settings.Hide = v
+end
+})
+
+FarmingSection:AddToggle({
+Name = "Auto-Quest",
+Callback  = function(v)
+    Settings.AutoQuest = v
+end
+})
+
+FarmingSection:AddDropdown({
+Name = "Target",
+List = {"Low-Tiers","Mid-Tiers","Elite-Tiers","High-Tiers"},
+Value = "Low-Tiers",
+Callback  = function(v)
+    Settings.Quest = Quests[v]
+    Settings.Target = v
+end
+})
+
+FarmingSection:AddToggle({
+Name = "Kill-Aura",
+Callback  = function(v)
+    Settings.KillAura = v
+end
+})
+
+FarmingSection:AddSlider({
+Name = "Distance",
+Value = 15,
+Min = 0,
+Max = 50,
+Callback = function(v)
+    Settings.AuraDistance = v
+end,
+Format = function(Value)
+return tostring(Value).." Studs"
+end
+})
+
+for i,v in pairs(Positions) do
+    TeleportSection:AddButton({
+        Name = i,
+        Callback = function()
+            game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = v
+        end
+    })
+end
+
+local function Click(a)
+   game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+50,0,true,a,1)
+   game:GetService("VirtualInputManager"):SendMouseButtonEvent(a.AbsolutePosition.X+a.AbsoluteSize.X/2,a.AbsolutePosition.Y+50,0,false,a,1)
+end
+
+local function UpdateText()
+    if Player.Character and Player.Character:FindFirstChild("Humanoid") and Player.Character.Humanoid.Health > 0 then
+        if Player.Character:FindFirstChild("TPExemption") then
+            BypassText:Set("Teleport Bypassed: true")
+            else
+            BypassText:Set("Teleport Bypassed: false")
+        end
+    else
+    BypassText:Set("Teleport Bypassed: Loading")
+    end
+end
+
+local function QuestHandler()
+    if not game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Visible then
+    game:GetService("ReplicatedStorage").TakeQuest:FireServer(Settings.Quest)
+    end
+    if game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Visible and game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Folder.Objective.progress.Text:split("/")[1] == game:GetService("Players").LocalPlayer.PlayerGui.MainClient.Quest.Folder.Objective.progress.Text:split("/")[2] then
+    game:GetService("ReplicatedStorage").TakeQuest:FireServer("Completed")
+    end
+end
+
+local function GetDistance(part)
+    if Player.Character:FindFirstChild("HumanoidRootPart") and part ~= nil then
+        return (Player.Character.HumanoidRootPart.Position - part.Position).Magnitude
+    end
+    return nil
+end
+
+local function HidePlayer()
+    if game.Players.LocalPlayer.Character.Head:FindFirstChild("hpbar") then
+    game.Players.LocalPlayer.Character.Head.hpbar:Remove()
+    end
+    if game.Players.LocalPlayer.Character.Head:FindFirstChild("King") then
+    game.Players.LocalPlayer.Character.Head.King:Remove()
+    end
+    if game.Players.LocalPlayer.Character.Head:FindFirstChild("Jack") then
+    game.Players.LocalPlayer.Character.Head.Jack:Remove()
+    end
+end
+
+coroutine.wrap(function()
+    while wait(.1) do
+        pcall(function()
+            UpdateText()
+            if game.Players.LocalPlayer.PlayerScripts:FindFirstChild("gaming") then
+            game.Players.LocalPlayer.PlayerScripts.gaming:Destroy()
+            end
+        end)
+    end
+end)()
+
+coroutine.wrap(function()
+while task.wait() do
+    if Settings.KillAura then
+        for _,v in pairs(game:GetService("Workspace"):GetChildren()) do
+            pcall(function()
+                if v.Name ~= game.Players.LocalPlayer.Name and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and GetDistance(v.HumanoidRootPart) <= Settings.AuraDistance then
+                    game:GetService("ReplicatedStorage").Damage:FireServer("DualSwordHeavy", v.Humanoid, Player.Character.Cancellations.Value, {[1] = v.Humanoid})
+                end
+            end)
+        end
+    end
+end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if Settings.Hide then
+            pcall(HidePlayer)
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while task.wait() do
+        if Settings.AutoQuest then
+        pcall(QuestHandler)
+        end
+    end
+end)()
+
+coroutine.wrap(function()
+    while wait() do
+        if Settings.Autofarm then
+        Mobs = Targets[Settings.Target]
+        for _,v in pairs(workspace:GetChildren()) do
+            if not Settings.Autofarm then break end
+            if table.find(Mobs,v.Name) and v:FindFirstChild("Humanoid") and v.Humanoid.Health > 0 and v:FindFirstChild("HumanoidRootPart") then
+                Mob = v
+                pcall(function()
+                    repeat task.wait(.2)
+                        oldmob = Mob.HumanoidRootPart.CFrame
+                        game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = Mob.HumanoidRootPart.CFrame - Mob.HumanoidRootPart.CFrame.lookVector * 10
+                    until Mob.Humanoid.Health <= 0 or Mob == nil
+                    game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = old
+                end)
+            end
+        end
+        end
+    end
+end)()
