@@ -63,7 +63,7 @@ function Library:Notify(Text,Timer,Properties)
 		end
 	end
 
-	delay(Timer)
+	task.wait(Timer)
 	Frame:Destroy()
 end
 
