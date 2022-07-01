@@ -68,8 +68,8 @@ function Library:Notify(Text,Timer,StrokeProperties,CornerProperties)
 	for strokeprop, strokeval in next,StrokeProperties do
 		UIStroke[strokeprop] = strokeval
 	end
-	for cornerprop, cornerprop in next,CornerProperties do
-		UICorner[cornerprop] = cornerprop
+	for cornerprop, cornerval in next,CornerProperties do
+		UICorner[cornerprop] = cornerval
 	end
 	
 	coroutine.wrap(function()
